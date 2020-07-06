@@ -1,26 +1,36 @@
 
 <div fxLayout="column">
 <mat-card fxFlex>
-    <form [formGroup]="newTodoForm">
+    <form [formGroup]="newTodoForm" (ngSubmit)="onAddToDo()">
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
         <mat-form-field >
             <mat-label>To Do here</mat-label>
-            <input matInput formControlName="title">
+            <textarea  matInput formControlName="title"></textarea>
           </mat-form-field>
         
         <mat-form-field>
             <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="picker" formControlName="dueDate">
+            <input matInput [matDatepicker]="picker" formControlName="dueDate" [min]="minDate">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <button mat-raised-button (click)="onAddToDo()">Add</button>
+          <button mat-raised-button type="submit" [disabled]="!newTodoForm.valid">Add</button>
         </div>
     </form>
 </mat-card>
 <mat-card fxFlex>
-     <mat-selection-list #todoss>
-            <mat-list-option *ngFor="let todo of todos">{{todo.title}}</mat-list-option>
+     <mat-selection-list #todoss *ngIf="todos.length>0">
+            <mat-list-option *ngFor="let todo of todos">
+                <div fxLayout="row">
+                <button mat-icon-button fxLayoutAlign="center">
+                    <mat-icon>delete</mat-icon>
+                </button>
+                <mat-label fxLayoutAlign="center">{{todo.title}}</mat-label>
+                </div>
+            </mat-list-option>
     </mat-selection-list>
+    <p *ngIf="todos.length==0">
+        No Todo found!
+    </p>
         </mat-card>
     </div>        

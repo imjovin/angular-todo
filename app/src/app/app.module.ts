@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatIconModule} from '@angular/material/icon';
 import {MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/material-moment-adapter';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,7 +26,7 @@ import { TodoAllComponent } from './todo-all/todo-all.component';
     BrowserModule,
     AppRoutingModule,
     MatCardModule,MatDatepickerModule,MatButtonModule,MatListModule,MatInputModule,MatFormFieldModule,
-    BrowserAnimationsModule,MatMomentDateModule,
+    BrowserAnimationsModule,MatMomentDateModule,MatIconModule,
     FlexLayoutModule,
     ReactiveFormsModule 
     

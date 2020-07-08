@@ -20,6 +20,10 @@ onAddToDo(){
 this.todos.push(this.newTodoForm.value);
 this.newTodoForm.reset();
 }
-onDeleteToDo(){
+onDeleteToDo(todoToDel:todo){
+  const deleteIndex= this.todos.indexOf(todoToDel);
+  if (deleteIndex > -1) {
+    this.todos.splice(deleteIndex, 1);
+  }
 }
 }

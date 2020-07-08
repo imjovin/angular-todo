@@ -1,6 +1,6 @@
 
 <div fxLayout="column">
-<mat-card fxFlex>
+<mat-card>
     <form [formGroup]="newTodoForm" (ngSubmit)="onAddToDo()">
     <div fxLayout="row" fxLayoutGap="20px" fxLayoutAlign="center">
         <mat-form-field >
@@ -14,7 +14,7 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-          <button mat-raised-button type="submit" [disabled]="!newTodoForm.valid">Add</button>
+          <button mat-raised-button type="submit" [disabled]="!newTodoForm.valid" class="button">Add</button>
         </div>
     </form>
 </mat-card>
@@ -22,7 +22,7 @@
      <mat-selection-list #todoss *ngIf="todos.length>0">
             <mat-list-option *ngFor="let todo of todos">
                 <div fxLayout="row">
-                <button mat-icon-button fxLayoutAlign="center">
+                <button mat-icon-button fxLayoutAlign="center" (click)="onDeleteToDo(todo)">
                     <mat-icon>delete</mat-icon>
                 </button>
                 <mat-label fxLayoutAlign="center">{{todo.title}}</mat-label>
